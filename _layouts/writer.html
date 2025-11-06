@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<article class="writer-profile">
+  <div class="container small-container">
+    <header class="writer-header">
+      
+      {% if page.image %}
+      <div class="writer-image-header">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.name }}">
+      </div>
+      {% endif %}
+
+      <h1 class="writer-title">{{ page.name }}</h1>
+      <p class="writer-role">{{ page.role }}</p>
+    </header>
+    
+    <div class="writer-content post-content">
+      {{ content }}
+    </div>
+
+  </div>
+</article>

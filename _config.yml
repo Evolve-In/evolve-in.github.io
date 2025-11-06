@@ -1,0 +1,44 @@
+# Site settings
+title: EvolveIn
+brand: CTV Mentor
+description: "Transform Your Body with EvolveIn, Your Trusted Partner in Fitness."
+email: fitmaker@gmail.com
+url: "https://<YOUR-USERNAME>.github.io" # e.g., https://johndoe.github.io
+baseurl: "/<YOUR-REPO-NAME>" # e.g., /fitmaker-website
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# =======================================
+# Collections
+# This tells Jekyll to build pages for each writer
+# =======================================
+collections:
+  writers:
+    output: true
+    permalink: /writers/:name
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  # =======================================
+  # Writer Defaults
+  # Assigns the 'writer' layout to all writers
+  # =======================================
+  - scope:
+      path: ""
+      type: "writers"
+    values:
+      layout: "writer"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

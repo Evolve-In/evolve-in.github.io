@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<article class="post">
+  <div class="container small-container">
+    <header class="post-header">
+      
+      {% if page.image %}
+      <div class="post-image-header">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      </div>
+      {% endif %}
+
+      <h1 class="post-title">{{ page.title }}</h1>
+      <p class="post-meta">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+        
+        • by 
+        {% assign author_page = site.writers | where: "name", page.author | first %}
+        {% if author_page %}
+          <a href="{{ author_page.url | relative_url }}">{{ page.author }}</a>
+        {% else %}
+          {{ page.author }}
+        {% endif %}
+        
+        • Program: 
+        <a href="{{ '/programs/' | relative_url }}{{ page.category | slugify }}/">{{ page.category }}</a>
+      </p>
+    </header>
+
+    <div class="post-content">
+      {{ content }}
+    </div>
+
+  </div>
+</article>

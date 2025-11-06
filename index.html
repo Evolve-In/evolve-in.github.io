@@ -1,0 +1,20 @@
+---
+layout: default
+title: Home - Transform Your Body
+---
+
+<div class="intro-quote-wrapper">
+  <div class="intro-column">
+    {% include hero.html %}
+  </div>
+  <div class="quote-column">
+    {% include quote-of-the-day.html %}
+  </div>
+</div>
+
+<section class="blogs-button-section">
+  <a href="{{ '/blog/' | relative_url }}" class="btn btn-primary">Blogs</a>
+</section>
+
+{% include meet-the-writers.html %}
+{% include blog-section.html %}

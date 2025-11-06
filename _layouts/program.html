@@ -1,0 +1,42 @@
+---
+layout: default
+---
+<div class="program-page blog-page">
+  <div class="container">
+    
+    <h2 class="section-title">{{ page.title }}</h2>
+    <p class="subtitle">All articles and guides related to the "{{ page.program_name }}" program.</p>
+    
+    <div class="blog-page-grid">
+      
+      {% assign post_found = false %}
+      {% for post in site.posts %}
+        
+        {% if post.program == page.program_name %}
+          {% assign post_found = true %}
+          <div class="blog-card">
+            <a href="{{ post.url | relative_url }}">
+              <div class="card-image">
+                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+              </div>
+              <div class="card-content">
+                <h3>{{ post.title }}</h3>
+                <div class="post-meta">
+                  <span>📅 {{ post.date | date: "%B %d, %Y" }}</span>
+                  <span>🏷️ {{ post.category }}</span>
+                </div>
+                <p>{{ post.description }}</p>
+                <span class="learn-more">Read More <span>→</span></span>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% if post_found == false %}
+        <p class="subtitle" style="text-align: center; grid-column: 1 / -1;">No posts have been added to this program yet. Check back soon!</p>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
