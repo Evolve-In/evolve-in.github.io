@@ -41,44 +41,33 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3
-          bundler-cache: true # This runs 'bundle install' for you
+          bundler-cache: true # This runs 'bundle install' and now installs html-proofer
 
       # ==========================================================
-      # FIXED: Install htmlproofer (which isn't in your Gemfile)
+      # THIS STEP HAS BEEN REMOVED
       # ==========================================================
-      - name: Install Dependencies
-        run: gem install html-proofer
+      # - name: Install Dependencies
+      #   run: gem install html-proofer
 
       # ==========================================================
-      # FIXED: Correctly build the site
-      # - We set the 'baseurl' so Jekyll builds all links correctly.
-      # - The destination '-d' defaults to '_site', which is correct.
+      # This step is now correct
       # ==========================================================
       - name: Build site
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: "production"
 
-      # ==========================================================
-      # FIXED: Test the correct '_site' folder
-      # ==========================================================
       - name: Test site
         run: |
           bundle exec htmlproofer _site \
             --disable-external \
             --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/,/404.html/"
 
-      # ==========================================================
-      # FIXED: Upload the correct '_site' folder
-      # ==========================================================
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "_site" # Just upload the _site folder
 
-  # ----------------------------------------------------------
-  # This 'deploy' job is perfect and needs no changes.
-  # ----------------------------------------------------------
   deploy:
     environment:
       name: github-pages
