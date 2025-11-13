@@ -1,4 +1,4 @@
-// 🌙 Ramadan 2026 Countdown Script (Stable Persistent Version)
+// 🌙 Ramadan 2026 Countdown Script
 document.addEventListener("DOMContentLoaded", function () {
   const banner = document.querySelector(".ramadan-banner");
   const closeBtn = document.querySelector(".close-btn");
@@ -10,15 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
   // Local storage keys
   const dismissKey = "ramadanBannerDismissed";
   const dismissTimeKey = "ramadanBannerDismissedTime";
-  const dismissDuration = 12 * 60 * 60 * 1000; // 12 hours (change to 24 if you want)
 
-  // ---- Check if dismissed ----
-  const dismissed = localStorage.getItem(dismissKey) === "true";
-  const dismissedTime = parseInt(localStorage.getItem(dismissTimeKey), 10) || 0;
+  // ---- Check dismissal state ----
+  const dismissed = localStorage.getItem(dismissKey);
+  const dismissedTime = localStorage.getItem(dismissTimeKey);
+
   const now = Date.now();
+  const twentyFourHours = 24 * 60 * 60 * 1000;
 
-  // Only show if not dismissed within the time window
-  if (dismissed && now - dismissedTime < dismissDuration) {
+  // If dismissed and less than 24 hours ago, keep hidden
+  if (dismissed === "true" && dismissedTime && now - parseInt(dismissedTime, 10) < twentyFourHours) {
     banner.classList.add("hidden");
   } else {
     banner.classList.remove("hidden");
@@ -60,16 +61,17 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem(dismissTimeKey, Date.now().toString());
   });
 
-  // ---- Optional: Hard reload (Ctrl + Shift + R) resets ----
-  window.addEventListener("beforeunload", (event) => {
+  // ---- Reset behavior (Ctrl + Shift + R / Hard reload) ----
+  window.addEventListener("beforeunload", () => {
     try {
-      const navEntries = performance.getEntriesByType("navigation");
-      if (navEntries.length && navEntries[0].type === "reload" && event.ctrlKey && event.shiftKey) {
+      // Detect hard reload: performance.navigation is deprecated, but still supported
+      if (performance.navigation.type === performance.navigation.TYPE_RELOAD) {
+        // Clear dismissal data on hard reload only
         localStorage.removeItem(dismissKey);
         localStorage.removeItem(dismissTimeKey);
       }
     } catch (e) {
-      // ignore safely
+      // Fallback (no crash)
     }
   });
 });
