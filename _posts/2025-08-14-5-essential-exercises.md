@@ -8,10 +8,14 @@ description: "Master these 5 fundamental compound exercises for maximum muscle g
 image: "/assets/images/posts/build-muscle.jpg"
 tags: ["Fitness", "Gym", "Strength"]
 <<<<<<< HEAD
+<<<<<<< HEAD
 program: "Gym Plan"
 =======
 program: "Deen"
 >>>>>>> bc495cb (FIX: fixed the path for "/program/deen/" and fixed the countdown glitch)
+=======
+program: "Gym Plan"
+>>>>>>> 5bbe3d7 (FIX: fixed the path for /program/deen/ and countdown glitch)
 
 ---
 
