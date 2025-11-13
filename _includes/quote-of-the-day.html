@@ -1,0 +1,53 @@
+<div class="quote-box">
+  <p class="quote-text" id="quote-text">Loading quote...</p>
+  <p class="quote-author" id="quote-author"></p>
+
+</div>
+
+<script>
+  // This script runs after the page has loaded
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    // Find the HTML elements we want to change
+    const quoteTextElement = document.getElementById("quote-text");
+    const quoteAuthorElement = document.getElementById("quote-author");
+
+    // Fetch the new quotes.json file
+    fetch('{{ "/quotes.json" | relative_url }}')
+      .then(response => {
+        if (!response.ok) {
+          // This error happens if quotes.json is missing
+          throw new Error('Could not find quotes.json. Please restart your Jekyll server.');
+        }
+        return response.json();
+      })
+      .then(quotes => {
+        
+        // Check if we actually got any quotes
+        if (quotes && quotes.length > 0) {
+          
+          // Pick a random number
+          const randomIndex = Math.floor(Math.random() * quotes.length);
+          
+          // Get the quote at that random position
+          const randomQuote = quotes[randomIndex];
+          
+          // Update the text on the page
+          // .innerHTML correctly handles special characters like '
+          quoteTextElement.innerHTML = randomQuote.quote;
+          quoteAuthorElement.innerHTML = "— " + randomQuote.author;
+
+        } else {
+          // This will show if your quotes.yml file is empty
+          quoteTextElement.textContent = "Add your inspirational quotes to the _data/quotes.yml file!";
+          quoteAuthorElement.textContent = "— The EvolveIn Team";
+        }
+      })
+      .catch(error => {
+        // This will show any error (like the one above)
+        console.error("Error fetching quotes:", error);
+        quoteTextElement.textContent = "Could not load quote.";
+        quoteAuthorElement.textContent = "Error";
+      });
+  });
+</script>

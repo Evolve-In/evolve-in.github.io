@@ -1,0 +1,30 @@
+<header class="site-header">
+  <div class="container">
+    <div class="brand-identity">
+      <a href="{{ "/" | relative_url }}" class="logo">
+        <span class="logo-main">Evolve<strong class="red-text">In</strong></span>
+        <span class="logo-tagline">Change Your Version</span>
+      </a>
+    </div>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="{{ "/" | relative_url }}" class="active">Home</a></li>
+        
+        <li class="nav-dropdown">
+          <a href="#">Programs <span>▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{{ '/programs/increase-productivity/' | relative_url }}">Increase Productivity</a></li>
+            <li><a href="{{ '/programs/deen/' | relative_url }}">Deen</a></li>
+            <li><a href="{{ '/programs/home-workout/' | relative_url }}">Home Workout</a></li>
+            <li><a href="{{ '/programs/gym-plan/' | relative_url }}">Gym Plan</a></li>
+          </ul>
+        </li>
+
+        <li><a href="{{ '/about/' | relative_url }}">About Us</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}">Blog</a></li>
+        <li><a href="#contact-section">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

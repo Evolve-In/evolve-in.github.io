@@ -1,0 +1,44 @@
+# Site settings
+title: EvolveIn
+brand: EvolveIn
+description: "Realize the potential Allah blessed you with through EvolveIn"
+email: evolvein.team@gmail.com
+url: "https://evolve-in.github.io" # e.g., https://johndoe.github.io
+baseurl: "" # e.g., /fitmaker-website
+
+# Build settings
+theme: minima
+plugins:
+  - jekyll-feed
+
+# =======================================
+# Collections
+# This tells Jekyll to build pages for each writer
+# =======================================
+collections:
+  writers:
+    output: true
+    permalink: /writers/:name
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  # =======================================
+  # Writer Defaults
+  # Assigns the 'writer' layout to all writers
+  # =======================================
+  - scope:
+      path: ""
+      type: "writers"
+    values:
+      layout: "writer"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md

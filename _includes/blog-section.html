@@ -1,0 +1,51 @@
+<section class="blog-section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <h2 class="section-title">Fitmaker <span class="highlight">Blog Posts</span></h2>
+        <p class="subtitle">Discover Essential Tips To Maximize Your Workout Results And Reach Your Fitness Goals Faster.</p>
+      </div>
+    </div>
+    
+    <div class="blog-grid">
+      {% assign featured_post = site.posts[0] %}
+      <div class="blog-card featured">
+        <a href="{{ featured_post.url | relative_url }}">
+          <div class="card-image">
+            <img src="{{ featured_post.image | relative_url }}" alt="{{ featured_post.title }}">
+          </div>
+          <div class="card-content">
+            <h3>{{ featured_post.title }}</h3>
+            <div class="post-meta">
+              <span>📅 {{ featured_post.date | date: "%B %d" }}</span>
+              <span>🏷️ {{ featured_post.category }}</span>
+            </div>
+            <span class="learn-more">Learn More <span>→</span></span>
+          </div>
+        </a>
+      </div>
+
+      {% for post in site.posts limit:5 offset:1 %}
+      <div class="blog-card">
+        <a href="{{ post.url | relative_url }}">
+          <div class="card-image">
+            <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+          </div>
+          <div class="card-content">
+            <h3>{{ post.title }}</h3>
+            <div class="post-meta">
+              <span>📅 {{ post.date | date: "%B %d" }}</span>
+              <span>🏷️ {{ post.category }}</span>
+            </div>
+            <span class="learn-more">Learn More <span>→</span></span>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="view-all-btn">
+      <a href="{{ '/blog/' | relative_url }}" class="btn btn-secondary">View All <span>⟩</span></a>
+    </div>
+  </div>
+</section>
