@@ -12,7 +12,16 @@ layout: default
       {% assign post_found = false %}
       {% for post in site.posts %}
         
+<<<<<<< HEAD
+<<<<<<< HEAD
         {% if post.program == page.program_name %}
+=======
+        {% if post.category == page.program_name %}
+          
+>>>>>>> bc495cb (FIX: fixed the path for "/program/deen/" and fixed the countdown glitch)
+=======
+        {% if post.program == page.program_name %}
+>>>>>>> 5bbe3d7 (FIX: fixed the path for /program/deen/ and countdown glitch)
           {% assign post_found = true %}
           <div class="blog-card">
             <a href="{{ post.url | relative_url }}">
@@ -23,7 +32,15 @@ layout: default
                 <h3>{{ post.title }}</h3>
                 <div class="post-meta">
                   <span>📅 {{ post.date | date: "%B %d, %Y" }}</span>
+<<<<<<< HEAD
+<<<<<<< HEAD
                   <span>🏷️ {{ post.category }}</span>
+=======
+                  <span>Program: {{ post.category }}</span>
+>>>>>>> bc495cb (FIX: fixed the path for "/program/deen/" and fixed the countdown glitch)
+=======
+                  <span>🏷️ {{ post.category }}</span>
+>>>>>>> 5bbe3d7 (FIX: fixed the path for /program/deen/ and countdown glitch)
                 </div>
                 <p>{{ post.description }}</p>
                 <span class="learn-more">Read More <span>→</span></span>
@@ -39,4 +56,12 @@ layout: default
 
     </div>
   </div>
+<<<<<<< HEAD
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> bc495cb (FIX: fixed the path for "/program/deen/" and fixed the countdown glitch)
+=======
+</div>
+>>>>>>> 5bbe3d7 (FIX: fixed the path for /program/deen/ and countdown glitch)
