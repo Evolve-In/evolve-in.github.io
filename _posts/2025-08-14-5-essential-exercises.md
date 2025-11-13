@@ -7,7 +7,11 @@ author: "Mian Al Ruhanyat"
 description: "Master these 5 fundamental compound exercises for maximum muscle growth and strength."
 image: "/assets/images/posts/build-muscle.jpg"
 tags: ["Fitness", "Gym", "Strength"]
+<<<<<<< HEAD
 program: "Gym Plan"
+=======
+program: "Deen"
+>>>>>>> bc495cb (FIX: fixed the path for "/program/deen/" and fixed the countdown glitch)
 
 ---
 
